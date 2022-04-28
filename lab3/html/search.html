@@ -17,6 +17,8 @@
     ></script>
   </head>
   <body>
+    <div id="preloader"></div>
+
     <div class="container-wrapper two-column-grid-expand-two">
       <aside class="left-bar">
         <div class="logo">
@@ -28,7 +30,7 @@
         <nav class="nav">
           <ul class="nav-list font-md-grayed">
             <li class="svg">
-              <a href="index.html">
+              <a href="../index.html">
                 <div class="img-home"></div>
                 <span> Home</span>
               </a>
@@ -308,5 +310,13 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      var loader = document.getElementById("preloader");
+
+      window.addEventListener("load", function(){
+        loader.style.display = "none";
+      })
+    </script>
   </body>
 </html>

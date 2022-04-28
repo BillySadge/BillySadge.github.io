@@ -18,6 +18,8 @@
     ></script>
   </head>
   <body>
+    <div id="preloader"></div>
+    
     <div class="container-wrapper two-column-grid-expand-two">
       <aside class="left-bar">
         <div class="logo">
@@ -26,12 +28,12 @@
           <img src="../assets/img/logo.svg" alt="logo" />
         </div>
         <div class="logo-small">
-          <img src="../assets/img/logo-small.svg" alt="small-logo" />
+          <img src="../assets/img/logo-small.svg" alt=  "small-logo" />
         </div>
         <nav class="nav">
           <ul class="nav-list font-md-grayed">
-            <li class="svg" id="home">
-              <a href="index.html">
+            <li class="svg">
+              <a href="../index.html">
                 <div class="img-home"></div>
                 <span> Home</span>
               </a>
@@ -58,12 +60,12 @@
               </a>
             </li>
 
-            <li>
+            <li id="fav">
               <a href="#">
                 <div class="icons icon-heart">
                   <i class="fa-solid fa-heart"></i>
                 </div>
-                <span> Favorite Songs</span>
+                <span class="fav-songs"> Favorite Songs</span>
               </a>
             </li>
           </ul>
@@ -266,5 +268,14 @@
         </div>
       </footer>
     </div>
+
+
+    <script>
+      var loader = document.getElementById("preloader");
+
+      window.addEventListener("load", function(){
+        loader.style.display = "none";
+      })
+    </script>
   </body>
 </html>

@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Player</title>
-    <link
+    <!-- <link
       rel="icon"
-      type="image/jpg"
-      href="../assets/img/spotify_favicon.ico"
-    />
+      type="image/x-icon"
+      href="assets/img/spotify_favicon.ico"
+    /> -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
 
     <link rel="stylesheet" href="../css/styles.css" />
     <script
@@ -18,15 +19,18 @@
     ></script>
   </head>
   <body>
+    <div id="preloader"></div>
+
+    <!-- <div class="lds-heart"><div></div></div> -->
     <div class="container-wrapper two-column-grid-expand-two">
       <aside class="left-bar">
         <div class="logo">
           <!-- <span class="icon-logo"></span> -->
           <!-- <i class="logo"></i> -->
-          <img src="../assets/img/logo.svg" alt="logo" />
+          <img src="assets/img/logo.svg" alt="logo" />
         </div>
         <div class="logo-small">
-          <img src="../assets/img/logo-small.svg" alt="small-logo" />
+          <img src="assets/img/logo-small.svg" alt="small-logo" />
         </div>
         <nav class="nav">
           <ul class="nav-list font-md-grayed">
@@ -37,7 +41,7 @@
               </a>
             </li>
             <li class="svg">
-              <a href="search.html">
+              <a href="html/search.html">
                 <div class="img-search"></div>
                 <span> Search</span>
               </a>
@@ -59,7 +63,7 @@
             </li>
 
             <li>
-              <a href="favorite.html">
+              <a href="html/favorite.html">
                 <div class="icons icon-heart">
                   <i class="fa-solid fa-heart"></i>
                 </div>
@@ -75,25 +79,40 @@
           <div class="arrows-container">
             <div class="arrows">
               <img
-                src="../assets/img/left-arrow.png"
+                src="assets/img/left-arrow.png"
                 alt=""
                 onclick="history.back()"
               />
             </div>
             <div class="arrows">
               <!-- next page rework -->
-              <img
-                src="../assets/img/next.png"
-                alt=""
-                onclick="history.go(-1)"
-              />
+              <img src="assets/img/next.png" alt="" onclick="history.go(-1)" />
             </div>
           </div>
-          <div class="empty"></div>
+          <!-- <div class="empty"></div> -->
+          <div class="empty">
+            <input type="checkbox" id="show" />
+            <label for="show" class="show-btn">View Login Popup</label>
 
+            <div class="login-container">
+              <label for="show" class="close-btn" title="close">X</label>
+              <h1 class="tlogin">Spotify</h1>
+              <form action="#">
+                <label class="login-info">Email or Phone</label>
+                <input class="input-login" type="text" />
+                <label class="login-info">Password</label>
+                <input class="input-login" type="password" />
+                <a class="login-link" href="#">Forgot Password?</a>
+                <button class="button-login">Submit</button>
+                <div class="link-container">
+                  Not a member? <a href="#" class="login-link">Sigup here</a>
+                </div>
+              </form>
+            </div>
+          </div>
           <div class="account dropdown">
             <div class="account-img">
-              <img src="../assets/img/me.png" alt="" />
+              <img src="assets/img/me.png" alt="" />
             </div>
             <div class="account-name">Andrei Chaplinskiy</div>
             <i class="fa-solid fa-sort-down"></i>
@@ -112,9 +131,9 @@
           <ul id="test" class="small-cards-container">
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/mgk2.jpg" alt="mgk" />
+                <img src="assets/img/mgk2.jpg" alt="mgk" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Papercut</div>
@@ -122,9 +141,9 @@
             </li>
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/frank.jpg" alt="frank ocean" />
+                <img src="assets/img/frank.jpg" alt="frank ocean" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Nights</div>
@@ -132,9 +151,9 @@
             </li>
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/crystal.jpg" alt="KEROSENE" />
+                <img src="assets/img/crystal.jpg" alt="KEROSENE" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">KEROSENE</div>
@@ -142,9 +161,9 @@
             </li>
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/mitski.jpg" alt="mitski" />
+                <img src="assets/img/mitski.jpg" alt="mitski" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Washing Machine Heart</div>
@@ -152,9 +171,9 @@
             </li>
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/impala.jpg" alt="implata" />
+                <img src="assets/img/impala.jpg" alt="implata" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Let It Happen</div>
@@ -162,9 +181,9 @@
             </li>
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/q.jpg" alt="" />
+                <img src="assets/img/q.jpg" alt="" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Take Me Where Your Heart Is</div>
@@ -181,9 +200,9 @@
           <ul id="test" class="small-cards-container">
             <li class="small-card small-card-1">
               <div class="small-card-image">
-                <img src="../assets/img/mgk2.jpg" alt="mgk" />
+                <img src="assets/img/mgk2.jpg" alt="mgk" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Machine Gul Kelly</div>
@@ -191,9 +210,9 @@
             </li>
             <li class="small-card small-card-2">
               <div class="small-card-image">
-                <img src="../assets/img/tom.jpeg" alt="Tom York" />
+                <img src="assets/img/tom.jpeg" alt="Tom York" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Tom York</div>
@@ -201,9 +220,9 @@
             </li>
             <li class="small-card small-card-3">
               <div class="small-card-image">
-                <img src="../assets/img/mgk.png" alt="Mix daily" />
+                <img src="assets/img/mgk.png" alt="Mix daily" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Mix daily</div>
@@ -211,19 +230,19 @@
             </li>
             <li class="small-card small-card-4">
               <div class="small-card-image">
-                <img src="../assets/img/crystal2.png" alt="crystal castles" />
+                <img src="assets/img/crystal2.png" alt="crystal castles" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
-              <div class="small-card-title">Crystal Castles</div> 
+              <div class="small-card-title">Crystal Castles</div>
               <div class="small-card-details">Artist</div>
             </li>
             <li class="small-card small-card-5">
               <div class="small-card-image">
-                <img src="../assets/img/gorillaz.jpg" alt="gorillaz" />
+                <img src="assets/img/gorillaz.jpg" alt="gorillaz" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Gorillaz</div>
@@ -231,9 +250,9 @@
             </li>
             <li class="small-card small-card-5">
               <div class="small-card-image">
-                <img src="../assets/img/poorstacy.jpg" alt="poorstacy" />
+                <img src="assets/img/poorstacy.jpg" alt="poorstacy" />
                 <div class="play-button-overlay">
-                  <img src="../assets/img/play-button.png" alt="" />
+                  <img src="assets/img/play-button.png" alt="" />
                 </div>
               </div>
               <div class="small-card-title">Poorstacy</div>
@@ -246,7 +265,7 @@
       <footer class="player three-column-grid-expand-two">
         <div class="player-left-bar">
           <div class="player-left-bar__img">
-            <img src="../assets/img/radiohead.jpg" alt="" />
+            <img src="assets/img/radiohead.jpg" alt="" />
           </div>
           <div class="player-left-bar__title">
             <div class="player-left_bar__title-name font-sm-white">
@@ -257,7 +276,7 @@
             </div>
           </div>
           <i class="fa-solid fa-heart"></i>
-          <img src="../assets/img/mini-player.svg" alt="" />
+          <img src="assets/img/mini-player.svg" alt="" />
         </div>
 
         <div class="player-center">
@@ -280,7 +299,7 @@
           <a href="#popup1"><i class="fa-solid fa-align-justify"></i></a>
           <div id="popup1" class="overlay">
             <div class="popup">
-              <img class="pi2" src="../assets/img/radiohead.jpg" alt="" />
+              <img class="pi2" src="assets/img/radiohead.jpg" alt="" />
               <span class="popup-name">Ideotique</span>
               <span class="popup-details">Radiohead</span>
               <a class="close" href="#">&times;</a>
@@ -311,5 +330,13 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      var loader = document.getElementById("preloader");
+
+      window.addEventListener("load", function () {
+        loader.style.display = "none";
+      });
+    </script>
   </body>
 </html>
