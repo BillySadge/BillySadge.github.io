@@ -34,6 +34,10 @@ let track_list = [
 
 ];
 
+function changeDef(event){
+  console.log(event.target);
+}
+// rework
 function random_bg_color() {
 
   let red = Math.floor(Math.random() * 256) + 64;
@@ -41,8 +45,12 @@ function random_bg_color() {
   let blue = Math.floor(Math.random() * 256) + 64;
 
   let bgColor = "rgb(" + red + "," + green + "," + blue + ")";
+  let gradient = "linear-gradient(180deg, " + bgColor + "0%, rgba(18,18,18,1) 50%)";
+  var element = document.getElementById("main");  
+  // element.style.transition = "all 2s linear";
+  // element.style.background = bgColor;
 
-  document.body.style.background = bgColor;
+  element.style.background = gradient;
 }
 
 function loadTrack(track_index) {

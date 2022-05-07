@@ -15,6 +15,7 @@ class Auth {
 
 	logOut() {
 		localStorage.removeItem("auth");
+		localStorage.removeItem("uname");
 		window.location.replace("/");
 	}
 }
