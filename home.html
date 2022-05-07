@@ -36,18 +36,16 @@
     <!-- <div class="lds-heart"><div></div></div> -->
     <div class="container-wrapper two-column-grid-expand-two">
       <aside class="left-bar">
-        <div class="logo navbar">
+        <div class="logo">
           <!-- <span class="icon-logo"></span> -->
           <!-- <i class="logo"></i> -->
           <img src="assets/img/logo.svg" alt="logo" />
         </div>
-        <div class="logo-small navbar-link navbar-link-toggle">
+        <div class="logo-small">
           <img src="assets/img/logo-small.svg" alt="small-logo" />
         </div>
 
         <nav class="nav">
-          <!-- <button><i class="fa-solid fa-align-justify"></i></button> -->
-
           <ul class="nav-list font-md-grayed">
             <li class="svg" id="home">
               <a href="#">
@@ -157,7 +155,7 @@
           <ul class="playlist-card-container">
             <li class="playlist-card playlist-1">
               
-              <section class="playlist-item">
+              <section class="playlist-item" onclick="window.location='html/favorite.html'">
                 <div class="playlist-card-image">
                   <img src="assets/img/mgk2.jpg" alt="mgk" />
                   <div class="play-button-overlay-playlist">
@@ -237,7 +235,7 @@
           <ul id="test" class="small-cards-container">
             <li class="small-card small-card-1">
                
-              <section class="card-item">
+              <section class="card-item" onclick="window.location='html/favorite.html'">
                 <div class="small-card-image">
                   <img src="assets/img/mgk2.jpg" alt="mgk" />
                   <div class="play-button-overlay">
@@ -402,12 +400,12 @@
             <img  src="assets/img/radiohead.jpg" alt="" />
           </div>
           <div class="player-left-bar__title">
-            <div class="player-left_bar__title-name track-name font-sm-white">
+            <span class="player-left-bar__title-name track-name font-sm-white">
               Radiohead
-            </div>
-            <div class="player-left-bar__title-description track-artist font-xs-grayed">
+            </span>
+            <span class="player-left-bar__title-description track-artist font-xs-grayed">
               Ideotique
-            </div>
+            </span>
           </div>
           <i class="fa-solid fa-heart"></i>
           <img src="assets/img/mini-player.svg" alt="" />
