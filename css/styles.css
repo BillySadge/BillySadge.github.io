@@ -1922,4 +1922,6 @@ ul#playlist-list > li > a:hover {
     width: 18rem;
     height: 3rem;
     overflow: hidden;
+    caret-color: lightgreen;
+    outline: none;
 }
