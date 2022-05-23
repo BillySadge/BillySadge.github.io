@@ -219,7 +219,7 @@ function addAnother() {
     let li = document.createElement("li");
     let children = ul.children.length + 1
     li.setAttribute("id", "playlist"+children)
-    let liInner = `<a href=\"#favorite\"><span> <i>playlist ${children}</i></span></a>`
+    let liInner = `<a href=\"#favorite\"><span onclick="startEditing(this)" onblur="this.contentEditable=false;" class="editable-name"> <i>playlist ${children}</i></span></a>`
     li.innerHTML = liInner
     ul.appendChild(li)
 }
@@ -295,4 +295,14 @@ function favFilter(songs){
     }
   }
   return newSongs;
+}
+
+function startEditing(element){
+  element.contentEditable=true;
+  setTimeout(function() {
+    if (document.activeElement !== element) {
+      element.contentEditable = false;
+    }
+  }, 300);
+
 }

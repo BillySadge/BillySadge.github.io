@@ -82,12 +82,12 @@
             <ul id="playlist-list">
               <li class="playlist1">
                 <a href="#favorite">
-                  <span><i>playlist 1</i></span>
+                  <span onclick="startEditing(this)" onblur="this.contentEditable=false;" class="editable-name"><i>playlist 1</i></span>
                 </a>
               </li>
               <li class="playlist2">
                 <a href="#favorite">
-                  <span> <i>playlist 2</i></span>
+                  <span onclick="startEditing(this)" onblur="this.contentEditable=false;" class="editable-name"><i>playlist 2</i></span>
                 </a>
               </li>
             </ul>

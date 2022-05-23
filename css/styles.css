@@ -1916,3 +1916,10 @@ ul#playlist-list > li > a:hover {
 .submenu li:hover > .submenu2{
     display: block;
 } */ 
+
+.editable-name {
+    display:block;
+    width: 18rem;
+    height: 3rem;
+    overflow: hidden;
+}
