@@ -1,3 +1,6 @@
+
+// import {track_list} from 'data.js'
+
 // let now_playing = document.querySelector(".now-playing");
 let track_art = document.querySelector(".track-art");
 let track_name = document.querySelector(".track-name");
@@ -6,6 +9,9 @@ let track_artist = document.querySelector(".track-artist");
 let playpause_btn = document.querySelector(".playpause-track");
 let next_btn = document.querySelector(".next-track");
 let prev_btn = document.querySelector(".prev-track");
+let repeat_btn = document.querySelector(".fa-repeat");
+let fav_btn = document.querySelector(".bottom-heart");  
+let entbtn = document.querySelector(".favorite-button");
 
 let seek_slider = document.querySelector(".seek-slider");
 let volume_slider = document.querySelector(".volume-slider");
@@ -14,30 +20,18 @@ let total_duration = document.querySelector(".total-duration");
 
 let track_index = 0;
 let isPlaying = false;
+let isRepeat = false;
+let isFav = false;
 let updateTimer;
 
 let curr_track = document.createElement('audio');
+const favoriteSongs = favFilter(track_list);
 
-let track_list = [
-    {
-        name: "Space Song",
-        artist: "Beach House",
-        image: "../assets/img/mgk2.jpg",
-        path: "../assets/songs/Space_Song.mp3"
-    },
-    {
-        name: "Drowning",
-        artist: "Vague003",
-        image: "../assets/img/q.jpg",
-        path: "../assets/songs/Drowning.mp3"
-    }
 
-];
 
-function changeDef(event){
-  console.log(event.target);
-}
-// rework
+
+
+
 function random_bg_color() {
 
   let red = Math.floor(Math.random() * 256) + 64;
@@ -50,18 +44,31 @@ function random_bg_color() {
   // element.style.transition = "all 2s linear";
   // element.style.background = bgColor;
 
-  element.style.background = gradient;
+  try{
+    element.style.background = gradient;
+  }
+  finally{
+
+  }
+
 }
 
 function loadTrack(track_index) {
+  
   clearInterval(updateTimer);
   resetValues();
   curr_track.src = track_list[track_index].path;
   curr_track.load();
 
-  track_art.style.backgroundImage = "url(" + track_list[track_index].image + ")";
+  track_art.style.backgroundImage = "url(" + track_list[track_index].image + ") ";
   track_name.textContent = track_list[track_index].name;
   track_artist.textContent = track_list[track_index].artist;
+  if (track_list[track_index].isFavorite){
+    fav_btn.style = "color:rgb(40, 186, 20);";
+  }else{
+    fav_btn.style = "color: #d3d0d0";
+  }
+  
 //   now_playing.textContent = "PLAYING " + (track_index + 1) + " OF " + track_list.length;
 
   updateTimer = setInterval(seekUpdate, 1000);
@@ -75,11 +82,64 @@ function resetValues() {
   seek_slider.value = 0;
 }
 
+function repeatSong(){
+  if (isRepeat == false){
+    isRepeat = true;
+    curr_track.loop = true;
+    repeat_btn.style = "color: rgb(40, 186, 20);";
+  }else{
+    isRepeat = false;
+    curr_track.loop = false;
+    repeat_btn.style = "color: #d3d0d0";
+  }
+}
+
+function addToFav(){
+  if (isFav == false){
+    isFav = true;
+    track_list[track_index].isFavorite = true;
+    fav_btn.style = "color:rgb(40, 186, 20);";
+  }else{
+    track_list[track_index].isFavorite = false;
+    isFav = false;
+    fav_btn.style = "color: #d3d0d0";
+  }
+  try{
+  favoriteSongs = favFilter(track_list);
+  filltheContentOfLibrary();
+  }
+  finally{
+  fillPlaylistPage(track_list,false);
+  }
+
+}
+
+function shuffleSongs(){
+  shuffle(track_list);
+}
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  while (currentIndex != 0) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+
 loadTrack(track_index);
+
 
 function playpauseTrack() {
   if (!isPlaying) playTrack();
   else pauseTrack();
+  
 }
 
 function playTrack() {
@@ -148,11 +208,91 @@ function seekUpdate() {
 
 
 
-function classToggle() {
-  const navs = document.querySelectorAll('.navbar-items')
-  
-  navs.forEach(nav => nav.classList.toggle('navbar-toggleshow'));
+
+
+
+
+
+
+function addAnother() {
+    let ul = document.getElementById("playlist-list");
+    let li = document.createElement("li");
+    let children = ul.children.length + 1
+    li.setAttribute("id", "playlist"+children)
+    let liInner = `<a href=\"#favorite\"><span> <i>playlist ${children}</i></span></a>`
+    li.innerHTML = liInner
+    ul.appendChild(li)
 }
 
-document.querySelector('.navbar-link-toggle')
-  .addEventListener('click', classToggle);
+
+function fillPlaylistPage(songs, isFav){
+
+try{
+  const table = document.getElementById("empty-table");
+  table.innerHTML = tableInner;
+  const songCount = document.getElementById("song-count");
+  const playlistName = document.getElementById("playlist-name");
+  const playlistImg = document.getElementById("playlist-img");
+  let index = 0;
+  songs.forEach(element => {
+    
+    if(element.isFavorite == true){
+      let row = table.insertRow();
+      let num = row.insertCell(0);
+      num.innerHTML = ++index;
+      let img = row.insertCell(1);
+      img.innerHTML = `<img src=${element.image} alt="" width="50px">`;
+      let name = row.insertCell(2);
+      name.innerHTML = `<div class="table-title">
+      ${element.name}
+    </div>
+    <div class="table-title-description font-xs-grayed">
+      ${element.artist}
+    </div>`
+      let album = row.insertCell(3);
+      album.innerHTML = element.album;
+      let date = row.insertCell(4);
+      date.innerHTML = element.date;
+      let time = row.insertCell(5);
+      time.innerHTML = element.time;
+      let icon = row.insertCell(6);
+      icon.innerHTML = `<i class="fa-solid fa-ellipsis"></i>`;
+    }
+  });
+
+
+  songCount.innerHTML = index + " Songs";
+  playlistImg.src = `${songs[0].image}`;
+}
+finally{
+
+}
+}
+
+
+function filltheContentOfLibrary(){
+  let box = document.getElementById("liked-box");
+
+  box.innerHTML = `<div class="fav-songs-details">
+  <span class="display-songs font-md-grayed"
+    >${track_list[0].name.toLocaleLowerCase()} by ${track_list[0].artist.toLocaleLowerCase()} 
+    * ${track_list[1].name.toLocaleLowerCase()} by ${track_list[1].artist.toLocaleLowerCase()} 
+    * ${track_list[2].name.toLocaleLowerCase()} by ${track_list[2].artist.toLocaleLowerCase()}
+  </span>
+  <span class="fav-songs font-md-white">favorite songs</span>
+  <span class="songs-number font-sm-white">${favoriteSongs.length} favorite songs</span>
+</div>`;
+  
+}
+
+
+
+function favFilter(songs){
+  newSongs = [];
+  for (i = 0; i < songs.length; i++){
+    if (songs[i].isFavorite == true){
+        newSongs.push(songs[i]);
+    }
+  }
+  return newSongs;
+}
