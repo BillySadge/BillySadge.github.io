@@ -1,6 +1,4 @@
 
-// import {track_list} from 'data.js'
-
 // let now_playing = document.querySelector(".now-playing");
 let track_art = document.querySelector(".track-art");
 let track_name = document.querySelector(".track-name");
@@ -304,6 +302,8 @@ function fillFavPage(songs){
 
 
 function filltheContentOfLibrary(favPlaylists,favSongs){
+  // updatePlaylistStorage(favPlaylists);
+  // updateStorage(favSongs);  
   let box = document.getElementById("liked-box");
   let songsStr = "";
   for (i = 0; i < 3 && i<favSongs.length; i++){
@@ -367,7 +367,7 @@ function startEditing(element){
 
 
 function fillPlaylistPage(songs,name,isFav){
-
+  // updateStorage(songs);
   let favPlaylists = []
   for (i = 0 ; i < playlists.length; i++){
     if(playlists[i].isFavorite === true){

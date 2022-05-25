@@ -84,15 +84,17 @@ const locationHandler = async () => {
 		case 'library':
 			if (favPlaylistFromStorage !== null && favSongsFromStorage !== null){
 				changeData(favPlaylistFromStorage);	
+				// changeData(favSongsFromStorage);
 				filltheContentOfLibrary(favPlaylistFromStorage, favSongsFromStorage);
 			}else{
-				fillPlaylistPage(favoritePlaylists,favSongsFromStorage);
+				fillPlaylistPage(favoritePlaylists,favoriteSongs);
 			}
 			break;
 		case 'playlist':
 			const found = playlists.find(element =>(":" + element.id) === request.playlistId);
 			if (favPlaylistFromStorage !== null){
 				chagnePlaylistData(favPlaylistFromStorage);
+				// changeData(favSongsFromStorage);
 				fillPlaylistPage(found.songs,found.name,found.isFavorite);
 			}else{
 				fillPlaylistPage(found.songs,found.name,found.isFavorite);

@@ -123,7 +123,7 @@ const playlists = [
     {
         id: "13",
         name: "The Breakfast club",
-        songs: [track_list[0], track_list[1]],
+        songs: [track_list[1], track_list[0]],
         isFavorite: false,
 
     },
@@ -144,7 +144,7 @@ const playlists = [
     {
         id: "16",
         name: "I'm tired of making names",
-        songs: [track_list[1], track_list[3],track_list[7]],
+        songs: [track_list[4],track_list[1], track_list[3],track_list[7]],
         isFavorite: false,
 
     },
